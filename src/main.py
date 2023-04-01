@@ -1,12 +1,12 @@
 """
 This mais is an exemplo of how to use pyssistant
 """
+
 from pyssistant.dialog import Dialog
 from pyssistant.models.feature import feature
 from pyssistant.example_functionalities.feature_functions import *
 
-features = []
-features.append(feature("what time", function=get_time))
+features = [feature("what time", function=get_time)]
 features.append(feature("who are you", answer="Well actually I am a computer program, thus I'm no much more than logic being implemented over wire and some electricity, but I may help you if you like :)"))
 features.append(feature("report", function=get_report))
 features.append(feature("bye", answer="See you later :)", function=get_bye))

@@ -4,10 +4,10 @@ import psutil
 import os
 
 def get_time():
-    return "Now it is: " + str(datetime.datetime.now().time())[:-10]
+    return f"Now it is: {str(datetime.datetime.now().time())[:-10]}"
 
 def get_report():
-    return "battery: " + str(psutil.sensors_battery().percent) + "%"
+    return f"battery: {str(psutil.sensors_battery().percent)}%"
 
 def get_bye():
     return False

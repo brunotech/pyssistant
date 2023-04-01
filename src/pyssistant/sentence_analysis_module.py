@@ -7,22 +7,20 @@ import os
 
 def get_time_str():
     time = str(datetime.datetime.now().time())
-    time = time.replace(":", "_")
-    return time
+    return time.replace(":", "_")
 
 def play_message(sentence):
-    if sentence != '' or sentence != '\n':
-        SemaphoreOfSpeaking().get_instance().set_speaking_state(True)
+    SemaphoreOfSpeaking().get_instance().set_speaking_state(True)
 
-        tts = gTTS(text=sentence, lang='en')
-        filename = "/tmp/temp" + get_time_str() + ".mp3"
-        tts.save(filename)
+    tts = gTTS(text=sentence, lang='en')
+    filename = f"/tmp/temp{get_time_str()}.mp3"
+    tts.save(filename)
 
-        playsound(filename)
+    playsound(filename)
 
-        os.remove(filename)
+    os.remove(filename)
 
-        SemaphoreOfSpeaking().get_instance().set_speaking_state(False)
+    SemaphoreOfSpeaking().get_instance().set_speaking_state(False)
 
 class SentenceAnalysis:
 
@@ -86,7 +84,7 @@ class SentenceAnalysis:
                         message = function
                     elif(function != None):
                         conversation_state = function
-        if(message == ""):
-            message = "Sorry but '" + result + "', doesn't mean anything to me"
+        if (message == ""):
+            message = f"Sorry but '{result}', doesn't mean anything to me"
 
         return message
